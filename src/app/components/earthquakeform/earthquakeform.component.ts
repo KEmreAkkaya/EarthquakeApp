@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Eartquakeform } from '../../models/eartquakeform';
 import { DatePipe } from '@angular/common';
 import { EartquakeFormService } from '../../service/eartquake-form.service';
+import { WhiteSpaceControl } from 'src/app/validations/whiteSpaceValidation';
 
 
 @Component({
@@ -17,6 +18,10 @@ export class DepremformComponent implements OnInit {
   eartquakeForm :Eartquakeform;
   checkoutFormGroup: FormGroup;
   
+
+  //numberPattern =  '/^-?(0|[1-9]\d*)?$/';
+  numberPattern = '^[0-9]*$';
+  onlyCharacterPattern = '[-_a-zA-Z\\s]*';
  
   constructor(private formService:EartquakeFormService,private formBuilder: FormBuilder,private router:Router ){}
 
@@ -70,14 +75,16 @@ export class DepremformComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
+      
       this.checkoutFormGroup = this.formBuilder.group({
         user: this.formBuilder.group({
-          name: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(30)]),
-          surname: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(30)]),
-          tcnumber: new FormControl('',[Validators.required,Validators.minLength(11),Validators.maxLength(11)]),
-          telephone: new FormControl('',[Validators.required,Validators.minLength(11),Validators.maxLength(11)]),
+          name: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(30),Validators.pattern(this.onlyCharacterPattern)]),
+          surname: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(30),Validators.pattern(this.onlyCharacterPattern)]),
+          tcnumber: new FormControl('',[Validators.required,Validators.minLength(11),Validators.maxLength(11),Validators.pattern(this.numberPattern)]),
+          telephone: new FormControl('',[Validators.required,Validators.minLength(11),Validators.maxLength(11),Validators.pattern(this.numberPattern)]),
           relation: new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(56)]),
-          count: new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(3)]),
+          count: new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(3),Validators.pattern(this.numberPattern)]),
           lastconnectiontime: new FormControl('',[Validators.required]),
           lastconnectiondate:new FormControl('',[Validators.required])
           

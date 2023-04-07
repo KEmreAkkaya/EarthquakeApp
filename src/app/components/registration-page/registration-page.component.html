@@ -39,9 +39,9 @@
                                 class="form-control form-control-md" />
                             <div *ngIf="getPassword.invalid && (getPassword.dirty || getPassword.touched)"
                                 class="alert alert-warning mt-1">
+                                <div *ngIf="getPassword.errors.pattern ">Parola en az bir büyük harf,bir küçük harf ve bir rakam içermelidir.</div>
                                 <div *ngIf="getPassword.errors.required ">Parola boş bırakılamaz.</div>
-                                <div *ngIf="getPassword.errors.minlength ">Parola
-                                    minimum 8 karakter olmalıdır</div>
+                                <div *ngIf="getPassword.errors.minlength ">Parola minimum 8 karakter olmalıdır</div>
                                 <div *ngIf="getPassword.errors.maxlength">Parola maksimum 16 karakter olmalıdır.</div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                             <!-- Checkbox -->
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
-                                <label class="form-check-label" for="form1Example3"> Remember me </label>
+                                <label class="form-check-label" for="form1Example3">Beni Hatırla </label>
                             </div>
                             <a href="#!">Forgot password?</a>
                         </div>

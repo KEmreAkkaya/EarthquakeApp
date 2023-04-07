@@ -13,9 +13,11 @@
               <input  formControlName="name" type="text" id="name" class="form-control form-control-md" />
 
               <div  *ngIf="getName.invalid && (getName.dirty ||getName.touched)" class="alert alert-warning mt-1">
-                <div *ngIf="getName.errors.required ">FirstName is required</div>
-                <div *ngIf="getName.errors.minlength || getName.errors.notOnlyWhitespace" >FirstName must be at least 2 character long</div>
-                <div *ngIf="getName.errors.maxlength">FirstName must be max 30 character long</div>
+                <div *ngIf="getName.errors.pattern ">Geçersiz isim girdiniz.</div>
+                <div *ngIf="getName.errors.required ">Lütfen bir isim giriniz.</div>
+                <div *ngIf="getName.hasError('whitespace')">Boş karakter girdiniz.</div>
+                <div *ngIf="getName.errors.minlength " >İsim minimum 3 karakter uzunluğunda olmalıdır.</div>
+                <div *ngIf="getName.errors.maxlength">İsim maksimum 30 karakter uzunluğunda olmalıdır.</div>
               </div>
             </div>
 
@@ -24,10 +26,11 @@
                 <input  formControlName="surname" type="text" id="surname" class="form-control form-control-md" />
 
                 <div  *ngIf="getsurName.invalid && (getsurName.dirty ||getsurName.touched)" class="alert alert-warning mt-1">
-                  <div *ngIf="getsurName.errors.required">Lastname is required</div>
-                  <div *ngIf="getsurName.hasError('whitespace')">Lastname is not valid data</div>
-                  <div *ngIf="getsurName.errors.minlength">Lastname must be at least 2 character long</div>
-                  <div *ngIf="getsurName.errors.maxlength">Lastname must be max 30 character long</div>
+                  <div *ngIf="getsurName.errors.pattern ">Geçersiz soyisim girdiniz.</div>
+                  <div *ngIf="getsurName.errors.required">Lütfen bir soyisim giriniz.</div>
+                  <div *ngIf="getsurName.hasError('whitespace')">Boş karakter girdiniz.</div>
+                  <div *ngIf="getsurName.errors.minlength">Soyisim minimum 3 karakter uzunluğunda olmalıdır.</div>
+                  <div *ngIf="getsurName.errors.maxlength">Soyisim maksimum 30 karakter uzunluğunda olmalıdır.</div>
                 </div>
 
             </div> 
@@ -38,10 +41,12 @@
               <input  formControlName="tcnumber" type="text" id="tcnumber" class="form-control form-control-md" />
 
               <div  *ngIf="getTCNumber.invalid && (getTCNumber.dirty ||getTCNumber.touched)" class="alert alert-warning mt-1">
-                <div *ngIf="getTCNumber.errors.required">TCNumber is required</div>
-                <div *ngIf="getTCNumber.hasError('whitespace')">TCNumber is not valid data</div>
-                <div *ngIf="getTCNumber.errors.minlength">TCNumber must be 11 character long</div>
-                <div *ngIf="getTCNumber.errors.maxlength">TCNumber must be 11 character long</div>
+                <div *ngIf="getTCNumber.errors.pattern">Geçersiz bir TC No  girdiniz.</div>
+                <div *ngIf="getTCNumber.errors.required">Lütfen TC No giriniz.</div>
+                <div *ngIf="getTCNumber.hasError('whitespace')">Boş karakter girdiniz.</div>
+                <div *ngIf="getTCNumber.errors.minlength">TC No 11 karakter uzunluğunda olmalıdır.</div>
+                <div *ngIf="getTCNumber.errors.maxlength">TC No  11 karakter uzunluğunda olmalıdır.</div>
+               
               </div>
             </div>
             <div class="form-outline mb-4">
@@ -49,10 +54,11 @@
                 <input  formControlName="telephone" type="text" id="telephone" class="form-control form-control-md" />
 
                 <div  *ngIf="getTelephone.invalid && (getTelephone.dirty ||getTelephone.touched)" class="alert alert-warning mt-1">
-                  <div *ngIf="getTelephone.errors.required">Telephone is required</div>
-                  <div *ngIf="getTelephone.hasError('whitespace')">Telephone is not valid data</div>
-                  <div *ngIf="getTelephone.errors.minlength">Telephone must be 11 character long</div>
-                  <div *ngIf="getTelephone.errors.maxlength">Telephone must be 11 character long</div>
+                  <div *ngIf="getTelephone.errors.pattern">Geçersiz bir telefon numarası girdiniz.</div>
+                  <div *ngIf="getTelephone.errors.required">Lütfen bir telefon numarası giriniz.</div>
+                  <div *ngIf="getTelephone.hasError('whitespace')">Boş karakter girdiniz.</div>
+                  <div *ngIf="getTelephone.errors.minlength">Telefon numarası 11 karakter uzunluğunda olmalıdır.</div>
+                  <div *ngIf="getTelephone.errors.maxlength">Telefon numarası 11 karakter uzunluğunda olmalıdır.</div>
                 </div>
                 
               </div>
@@ -65,10 +71,10 @@
                 </select>
 
                 <div  *ngIf="getRelation.invalid && (getRelation.dirty ||getRelation.touched)" class="alert alert-warning mt-1">
-                  <div *ngIf="getRelation.errors.required">Relation is required</div>
-                  <div *ngIf="getRelation.hasError('whitespace')">Relation is not valid data</div>
-                  <div *ngIf="getRelation.errors.minlength">Relation must be 1 character long</div>
-                  <div *ngIf="getRelation.errors.maxlength">Relation must be 56 character long</div>
+                  <div *ngIf="getRelation.errors.required">Lütfen bir yakınlık derecesi seçiniz.</div>
+                  <div *ngIf="getRelation.hasError('whitespace')">Boş karakter girdiniz.</div>
+                  <div *ngIf="getRelation.errors.minlength">Yakınlık derecesi minimum 1 karakter uzunluğunda olmalıdır.</div>
+                  <div *ngIf="getRelation.errors.maxlength">Yakınlık derecesi maksimum 56 karakter uzunluğunda olmalıdır.</div>
                 </div>
             </div>
 
@@ -91,10 +97,11 @@
                 </select>
 
                 <div  *ngIf="getCount.invalid && (getCount.dirty ||getCount.touched)" class="alert alert-warning mt-1">
-                  <div *ngIf="getCount.errors.required">Count is required</div>
-                  <div *ngIf="getCount.hasError('whitespace')">Count is not valid data</div>
-                  <div *ngIf="getCount.errors.minlength">Count must be 1 character long</div>
-                  <div *ngIf="getCount.errors.maxlength">Count must be 56 character long</div>
+                  <div *ngIf="getCount.errors.pattern">Geçersiz bir yakın sayısı girdiniz. </div>
+                  <div *ngIf="getCount.errors.required">Lütfen bir yakın sayısı giriniz. </div>
+                  <div *ngIf="getCount.hasError('whitespace')">Boş karakter girdiniz.</div>
+                  <div *ngIf="getCount.errors.minlength">Yakın sayısı minimum 1 karakter uzunluğunda olmalıdır.</div>
+                  <div *ngIf="getCount.errors.maxlength">Yakın sayısı maksimum 56 karakter uzunluğunda olmalıdır.</div>
                 </div>
             </div>
             <div class="form-group mb-4">

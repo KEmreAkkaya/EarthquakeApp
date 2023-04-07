@@ -5,6 +5,7 @@ import { UserRegistrationForm } from '../../models/user-registration';
 import { AuthenticationService } from '../../service/authentication.service';
 import { AuthResponse } from 'src/app/models/auth-response';
 import { Observable, throwError } from 'rxjs';
+import { WhiteSpaceControl } from 'src/app/validations/whiteSpaceValidation';
 @Component({
   selector: 'app-registration-page',
   templateUrl: './registration-page.component.html',
@@ -17,6 +18,14 @@ export class RegistrationPageComponent implements OnInit {
   loading: boolean = false;
   error: string = "";
   message:string ="";
+
+  stringPattern = '[-_a-zA-Z0-9]*';
+
+// At least 8 characters in length
+// Lowercase letters
+// Uppercase letters
+// Numbers
+  passwordPattern = '(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,16}'
 
   constructor(private formService:AuthenticationService,private formBuilder: FormBuilder,private router:Router )
   {
@@ -66,7 +75,7 @@ export class RegistrationPageComponent implements OnInit {
     this.checkoutFormGroup = this.formBuilder.group({
       user: this.formBuilder.group({
         email: new FormControl('',[Validators.required,Validators.minLength(5),Validators.maxLength(150),Validators.email]),
-        password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(16)]),
+        password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(16),Validators.pattern(this.passwordPattern)]),
        
         
       })
