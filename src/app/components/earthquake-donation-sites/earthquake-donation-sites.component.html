@@ -1,0 +1,22 @@
+
+<div class="container">
+    <div class="my-2">
+        
+        <div class="list-group list-group-mine">
+            <a  class="list-group-item list-group-item-action bg-dark text-light fw-bold"
+            routerLink="">
+               Yardım Siteleri
+            </a>
+        
+            <a *ngFor="let site of sites" routerLink="{{site.id}}"   class="list-group-item list-group-item-action"
+            >
+                {{ site.name }}
+            </a>
+        </div>
+      
+       
+    </div>
+    
+       
+   
+</div>

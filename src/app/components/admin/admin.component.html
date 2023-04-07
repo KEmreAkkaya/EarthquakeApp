@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-auto col-md-4 col-xl-3 px-sm-2  " style="background-color: #151515;">
+                <app-adminpanel-control></app-adminpanel-control>
+        </div>
+        <div class="col py-3">
+            <div class="container my-3">
+                <div class="card mb-3 p-1" *ngIf="user else noUser">
+                    <div class="row">
+                       
+                        <div class="col-9">
+                            <div class="card-body">
+                                <p class="card-text"><label class="fw-bold">Kullanıcı Id: </label>{{ user.id }}</p>
+                                <p class="cart-text"><label class="fw-bold">Kullanıcı TC No: </label>{{ user.tcnumber }}</p>
+                                <p class="cart-text"> <label class="fw-bold">Kullanıcı Açık Parola: </label> {{ user.password }}</p>
+                                <p class="cart-text"><label class="fw-bold">Kullanıcı Durumu: </label> {{ user.isActive }}</p>
+                                <p class="cart-text"><label class="fw-bold">Kullanıcı Kayıt Zamanı: </label> {{ user.timestamp }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <ng-template #noUser>
+                    <div class="alert alert-warning">
+                        no User
+                    </div>
+                </ng-template>
+                </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css"; 
+
+.box
+{
+    margin:0px;
+    padding:15px;
+}
+
+li.nav-item:hover 
+{
+  
+
+  background-color: var(--bs-warning);
+ 
+}
+
+.card-img-top
+{
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-item
+{
+
+  text-decoration: none;
+  color:black;
+}
+
+
+
+.list-group-mine .list-group-item {
+  background-color: #f1f9fb;
+  color:#343a40;
+  
+}
+
+.list-group-mine .list-group-item:hover {
+  background-color: #ffc107;
+  color:#343a40;
+}
+
+@media (min-width: 0px) {  
+  .picture
+  {
+    max-height: 15vh;
+  }
+}
+@media (min-width: 576px) {  
+  .picture
+  {
+    max-height: 15vh;
+  }
+}
+ 
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+

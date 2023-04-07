@@ -1,0 +1,145 @@
+<section class="">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100 bg-dark text-light p-4 rounded">
+        
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1 my-2 ">
+         
+          <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()" class="mt-2">
+            <div formGroupName="user" class="form-area">
+           
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="name">Adınız</label>
+              <input  formControlName="name" type="text" id="name" class="form-control form-control-md" />
+
+              <div  *ngIf="getName.invalid && (getName.dirty ||getName.touched)" class="alert alert-warning mt-1">
+                <div *ngIf="getName.errors.required ">FirstName is required</div>
+                <div *ngIf="getName.errors.minlength || getName.errors.notOnlyWhitespace" >FirstName must be at least 2 character long</div>
+                <div *ngIf="getName.errors.maxlength">FirstName must be max 30 character long</div>
+              </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="surname">Soyadınız</label>
+                <input  formControlName="surname" type="text" id="surname" class="form-control form-control-md" />
+
+                <div  *ngIf="getsurName.invalid && (getsurName.dirty ||getsurName.touched)" class="alert alert-warning mt-1">
+                  <div *ngIf="getsurName.errors.required">Lastname is required</div>
+                  <div *ngIf="getsurName.hasError('whitespace')">Lastname is not valid data</div>
+                  <div *ngIf="getsurName.errors.minlength">Lastname must be at least 2 character long</div>
+                  <div *ngIf="getsurName.errors.maxlength">Lastname must be max 30 character long</div>
+                </div>
+
+            </div> 
+  
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="tcnumber">TC No Giriniz</label>
+              <input  formControlName="tcnumber" type="text" id="tcnumber" class="form-control form-control-md" />
+
+              <div  *ngIf="getTCNumber.invalid && (getTCNumber.dirty ||getTCNumber.touched)" class="alert alert-warning mt-1">
+                <div *ngIf="getTCNumber.errors.required">TCNumber is required</div>
+                <div *ngIf="getTCNumber.hasError('whitespace')">TCNumber is not valid data</div>
+                <div *ngIf="getTCNumber.errors.minlength">TCNumber must be 11 character long</div>
+                <div *ngIf="getTCNumber.errors.maxlength">TCNumber must be 11 character long</div>
+              </div>
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="telephone">İrtibat(Telefon) Numaranızı Giriniz:</label>
+                <input  formControlName="telephone" type="text" id="telephone" class="form-control form-control-md" />
+
+                <div  *ngIf="getTelephone.invalid && (getTelephone.dirty ||getTelephone.touched)" class="alert alert-warning mt-1">
+                  <div *ngIf="getTelephone.errors.required">Telephone is required</div>
+                  <div *ngIf="getTelephone.hasError('whitespace')">Telephone is not valid data</div>
+                  <div *ngIf="getTelephone.errors.minlength">Telephone must be 11 character long</div>
+                  <div *ngIf="getTelephone.errors.maxlength">Telephone must be 11 character long</div>
+                </div>
+                
+              </div>
+
+            <div class="form-group mb-4">
+                <label for="sel1">Yakınlık Derecenizi Giriniz:</label>
+                <select   formControlName="relation" class="form-control form-control-md"  id="sel1">
+                  <option>Birinci Dereceden Akrabası(Anne,Baba,Kardeş ,Çocuk ...)</option>
+                  <option>İkinci Dereceden Akrabası</option>
+                </select>
+
+                <div  *ngIf="getRelation.invalid && (getRelation.dirty ||getRelation.touched)" class="alert alert-warning mt-1">
+                  <div *ngIf="getRelation.errors.required">Relation is required</div>
+                  <div *ngIf="getRelation.hasError('whitespace')">Relation is not valid data</div>
+                  <div *ngIf="getRelation.errors.minlength">Relation must be 1 character long</div>
+                  <div *ngIf="getRelation.errors.maxlength">Relation must be 56 character long</div>
+                </div>
+            </div>
+
+
+          
+           
+             
+          
+
+
+
+
+            <div class="form-group mb-4">
+                <label for="sel1">Yakın Sayınızı Giriniz:</label>
+                <select  formControlName="count" class="form-control form-control-md" id="sel2">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+
+                <div  *ngIf="getCount.invalid && (getCount.dirty ||getCount.touched)" class="alert alert-warning mt-1">
+                  <div *ngIf="getCount.errors.required">Count is required</div>
+                  <div *ngIf="getCount.hasError('whitespace')">Count is not valid data</div>
+                  <div *ngIf="getCount.errors.minlength">Count must be 1 character long</div>
+                  <div *ngIf="getCount.errors.maxlength">Count must be 56 character long</div>
+                </div>
+            </div>
+            <div class="form-group mb-4">
+                <label for="start">En son irtibat tarihi:</label>
+
+                <input formControlName="lastconnectiondate" type="date" id="start" name="trip-start"
+                       value="2023-02-06"
+                       min="2023-02-01" max="2023-02-31"  class="form-control form-control-md">
+
+               
+            </div>
+            <div class="form-group mb-4">
+                <label for="start">En son irtibat saati:</label>
+
+               
+                <input formControlName="lastconnectiontime" type="time" id="appt" name="appt"
+                value="00:01"
+                min="00:00" max="23:59" required class="form-control form-control-md">
+
+            </div>
+  
+            
+  
+            <!-- Submit button -->
+           
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" >Kaydet</button>
+                    <!-- (click)="saveForm(name,surname,tcnumber,telephone) -->
+              </div>
+                 
+            </form>
+                
+            
+  
+            
+               
+               
+            
+            
+            
+         
+        </div>
+        <div class="col-md-4 col-lg-5 col-xl-6 my-2">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+              class="img-fluid" alt="Phone image">
+          </div>
+      </div>
+    </div>
+  </section>
