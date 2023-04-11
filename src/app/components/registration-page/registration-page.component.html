@@ -23,11 +23,10 @@
                             <div *ngIf="getEmail.invalid && (getEmail.dirty || getEmail.touched)"
                                 class="alert alert-warning mt-1">
                                 <div *ngIf="getEmail.errors.required">Mail adresi boş bırakılamaz.</div>
-                                <div *ngIf="getEmail.errors.minlength || getEmail.errors.notOnlyWhitespace">Mail adresi
-                                    minimum 5 karakter olmalıdır.</div>
-                                <div *ngIf="getEmail.errors.maxlength">Mail adresi maksimum 150 karakter olmalıdır.
-                                </div>
+                                <div *ngIf="getEmail.errors.minlength">Mail adresi minimum 5 karakter olmalıdır.</div>
+                                <div *ngIf="getEmail.errors.maxlength">Mail adresi maksimum 150 karakter olmalıdır.</div>
                                 <div *ngIf="getEmail.errors.email">Geçersiz bir mail adresi girdiniz.</div>
+                                <div *ngIf="getEmail.hasError('whitespace')">Boş karakter girdiniz.</div>
                             </div>
 
                         </div>

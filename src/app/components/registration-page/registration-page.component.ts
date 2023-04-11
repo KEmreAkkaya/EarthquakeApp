@@ -74,7 +74,7 @@ export class RegistrationPageComponent implements OnInit {
    ngOnInit(): void {
     this.checkoutFormGroup = this.formBuilder.group({
       user: this.formBuilder.group({
-        email: new FormControl('',[Validators.required,Validators.minLength(5),Validators.maxLength(150),Validators.email]),
+        email: new FormControl('',[Validators.required,Validators.minLength(5),Validators.maxLength(150),Validators.email,WhiteSpaceControl.trimValidator]),
         password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(16),Validators.pattern(this.passwordPattern)]),
        
         

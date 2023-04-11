@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthResponse } from 'src/app/models/auth-response';
 import { UserSignInForm } from 'src/app/models/user-sign-in';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { WhiteSpaceControl } from 'src/app/validations/whiteSpaceValidation';
 
 @Component({
   selector: 'app-login-page',
@@ -68,7 +69,7 @@ export class LoginPageComponent {
    ngOnInit(): void {
     this.checkoutFormGroup = this.formBuilder.group({
       user: this.formBuilder.group({
-        email: new FormControl('',[Validators.required,Validators.minLength(5),Validators.maxLength(150),Validators.email]),
+        email: new FormControl('',[Validators.required,Validators.minLength(5),Validators.maxLength(150),Validators.email,WhiteSpaceControl.trimValidator]),
         password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(16)]),
        
         
